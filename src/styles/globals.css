@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Se eliminan los pulsos azules */
+a,
+button,
+select,
+div {
+  -webkit-tap-highlight-color: transparent;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.font-circular {
+  font-family: var(--font-circular);
+}
+
+/* Estilos generales */
+@layer components {
+  /* barra de desplazamiento scroll */
+  ::-webkit-scrollbar {
+    @apply bg-dark-container-strong-color;
+    width: 0.6vw;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-body-color rounded;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-body-alt-color;
+  }
+
+  body {
+    @apply bg-dark-body-color overflow-x-hidden relative right-0 flex flex-col font-circular;
+  }
+  .section {
+    @apply overflow-hidden bg-alt relative desktop:py-14 tablet:py-12 phone:py-10 px-4;
+  }
+  .bg-alt {
+    @apply bg-dark-body-alt-color;
+  }
+  .bg-alt::before {
+    @apply desktop:bg-[linear-gradient(357deg,_#fff_-13%,_#0d161c_97%)];
+    opacity: 0.1;
+    content: "";
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 60%;
+    clip-path: polygon(0 0, 100% 0, 77% 100%, 0 100%);
+  }
+  .wrapper-banner {
+    @apply w-full my-auto desktop:px-0 tablet:px-0 desktop:justify-start mx-auto;
+  }
+  .h1 {
+    @apply desktop:text-3xl/9 tablet:text-2xl/9 phone:text-2xl/9;
+  }
+  .button {
+    @apply py-1.5 items-center px-3.5 text-sm rounded-md;
+  }
+  .wrapper {
+    @apply w-full px-4 m-auto;
+  }
+  .admin {
+    @apply mt-14 desktop:ml-56 tablet:ml-56 phone:ml-0 overflow-x-hidden;
+  }
+  .header {
+    @apply bg-dark-body-color h-14 flex items-center z-10 border-b border-dark-border-color justify-center 
+    desktop:w-[calc(100%-14rem)] tablet:w-[calc(100%-14rem)] phone:w-full;
+  }
+
+  .delete {
+    @apply no-underline;
+  }
+  .delete::before{
+    @apply absolute left-0 right-0 top-1/2 block h-[1.5px] w-full -rotate-[24deg] ;
+  }
+}
+
+/* Se quita el marcador del input number */
+@layer components {
+  .no-spinners::-webkit-inner-spin-button,
+  .no-spinners::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+/* Estilos de la tabla */
+@layer components {
+  .table-container table {
+    @apply w-full border-separate border-spacing-0;
+  }
+  .table-container thead th:first-child {
+    @apply rounded-tl  pl-6 border-l;
+  }
+  .table-container thead th:last-child {
+    @apply rounded-tr  pr-6 border-r;
+  }
+  .table-container thead th {
+    @apply text-sm text-dark-text-color font-normal bg-[#282828] border-t border-b border-dark-border-color;
+  }
+  .table-container tbody tr {
+    @apply bg-dark-container-color;
+  }
+  .table-container tbody td:first-child {
+    @apply border-l pl-6 border-dark-border-color;
+  }
+  .table-container tbody td:last-child {
+    @apply border-r pr-6 border-dark-border-color;
+  }
+  .table-container tbody td {
+    @apply border-b py-3 px-4 text-sm text-[#a0a0a0] border-dark-border-color ;
+  }
+  .table-container table span {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+  .table-container tbody tr:last-child td:last-child {
+    @apply rounded-br rounded-bl rounded-tl-none rounded-tr-none;
+  }
+  .text-td {
+    @apply text-[#a0a0a0];
+  }
+  .text-td-alt {
+    @apply text-[#e0eded];
+  }
+}
+
+/* No utilizados */
+@layer components {
+  .app-pages {
+    @apply desktop:ml-16 tablet:ml-16 phone:ml-0 desktop:mb-0 tablet:mb-0 phone:mb-14 overflow-x-hidden;
+  }
+
+  .container {
+    @apply overflow-hidden desktop:p-6 phone:p-4 border rounded-md border-dark-border-color bg-dark-container-color;
+  }
+
+  /* Componentes - Botones */
+  .button-regular {
+    @apply py-1 items-center px-3.5 text-sm leading-7 rounded-md bg-dark-main-color text-dark-title-color;
+  }
+
+  .button-small {
+    @apply flex py-2 items-center desktop:px-3.5 tablet:px-3.5 phone:px-3 desktop:text-sm tablet:text-sm phone:text-xs leading-7 rounded-md;
+  }
+
+  /* Header */
+
+  .nav-item {
+    @apply text-sm/7;
+    font-weight: 400;
+  }
+
+  /* Aside */
+  .nav-items {
+    @apply flex w-full desktop:p-4 tablet:p-4 phone:p-[.70rem] h-full desktop:hover:bg-dark-body-alt-color cursor-pointer items-center my-auto;
+  }
+
+  .nav_sidebar_movil {
+    @apply desktop:hidden tablet:hidden text-dark-text-color text-xs;
+  }
+  .nav_sidebar_movil_active {
+    @apply desktop:hidden tablet:hidden text-dark-main-color text-xs;
+  }
+
+  /* Dashboard */
+
+  /* grupo de texto */
+  .text-mobile-normal {
+    @apply text-sm;
+  }
+  .text-desktop-normal {
+    @apply text-base;
+  }
+  .h3 {
+    @apply desktop:text-xl/10 tablet:text-xl/10 phone:text-lg;
+  }
+  .h4 {
+    @apply desktop:text-lg tablet:text-lg phone:text-base;
+  }
+  .text-small {
+    @apply desktop:text-sm tablet:text-xs;
+    font-weight: 500;
+  }
+  .text-small-body {
+    @apply desktop:text-sm/tight tablet:text-xs/tight phone:text-sm/tight;
+  }
+  .button-small-input {
+    @apply py-1 items-center px-3.5 text-sm leading-7;
+  }
+
+  /* panel estilos */
+  .header_panel {
+    @apply bg-dark-body-alt-color border-b border-dark-border-color desktop:h-16 tablet:h-16 phone:h-14 flex items-center z-10;
+  }
+
+  /* Aside Panel*/
+  .nav-items_panel {
+    @apply flex w-full py-2 items-center phone:justify-center desktop:px-5 tablet:px-5 phone:px-4 text-dark-text-color rounded cursor-pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .nav-items_panel_active {
+    @apply flex w-full py-2 items-center phone:justify-center desktop:px-5 tablet:px-5 phone:px-4 text-dark-main-color bg-blue-900 rounded cursor-pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+}
