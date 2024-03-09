@@ -1,21 +1,18 @@
 'use client'
-import DatosPersonalesForm from "@/components/organisms/estudiantes/Inicio/DatosPersonales";
-import { ErrorResponse } from "@/types/errorResponse";
-import { Main } from "@/types/estudiantes";
-import { useEffect, useState } from "react";
+import DatosPersonalesForm from "@/components/organisms/estudiantes/DatosPersonales";
+import { useEffect } from "react";
+import { useGlobalContext } from "../Context/GlobalContext";
 
 export default function Inicio() {
 
-  // Get del users: Se realiza la conexion a la API
-  const [data, setData] = useState<Main | null>();
-  const [error, setError] = useState<ErrorResponse | null>();
-  const [loading, setLoading] = useState(false);
+  // Context Provider
+  const { dataPersonales, setDataPersonales, errorPersonales, setErrorPersonales, loadingPersonales, setLoadingPersonales } = useGlobalContext();
   const Fetch = async () => {
     try {
-      if (!data) {
-        setLoading(true);
+      if (!dataPersonales) {
+        setLoadingPersonales(true);
       }
-      setError(null);
+      setErrorPersonales(null);
 
       const response = await fetch(`/api/v1/student/info`, {
         method: 'GET',
@@ -24,28 +21,30 @@ export default function Inicio() {
         }
       })
       if (!response.ok) {
-        setData(null);
+        setDataPersonales(null);
         const res = await response.json();
-        setError(res);
+        setErrorPersonales(res);
         return
       }
       const res = await response.json();
-      setData(res);
+      setDataPersonales(res);
       return
 
     } catch (error: any) {
       console.error('Error en la solicitud:', error.message);
-      setError({ error: { código: 500, mensaje: 'Error encontrado', detalles: 'Contacte al administrador' } })
+      setErrorPersonales({ error: { código: 500, mensaje: 'Error encontrado', detalles: 'Contacte al administrador' } })
     } finally {
-      setLoading(false);
+      setLoadingPersonales(false);
     }
   }
 
   // Se ejecuta al inicio
   useEffect(() => {
-    Fetch();
+    if (!dataPersonales) {
+      Fetch();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [dataPersonales])
 
   return (
     <div className="phone:px-4 phone:py-4 tablet:py-10 desktop:py-10 phone:w-full tablet:w-11/12 desktop:max-w-6xl mx-auto space-y-5">
@@ -54,11 +53,11 @@ export default function Inicio() {
       <section className="overflow-visible">
         <div className="relative overflow-x-auto">
           <div className="bg-dark-container-color border border-dark-border-color rounded-md phone:p-5 tablet:p-7 desktop:p-10">
-            <DatosPersonalesForm estado={{ data, error, loading }} />
+            <DatosPersonalesForm estado={{ data:dataPersonales, error:errorPersonales, loading:loadingPersonales }} />
           </div>
         </div>
       </section>
-      
+
     </div>
   )
 };
