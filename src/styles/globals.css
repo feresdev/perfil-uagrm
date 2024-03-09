@@ -68,11 +68,11 @@ div {
     @apply w-full px-4 m-auto;
   }
   .admin {
-    @apply mt-14 desktop:ml-56 tablet:ml-56 phone:ml-0 overflow-x-hidden;
+    @apply mt-14 desktop:ml-64 tablet:ml-64 phone:ml-0 overflow-x-hidden;
   }
   .header {
     @apply bg-dark-body-color h-14 flex items-center z-10 border-b border-dark-border-color justify-center 
-    desktop:w-[calc(100%-14rem)] tablet:w-[calc(100%-14rem)] phone:w-full;
+    desktop:w-[calc(100%-16rem)] tablet:w-[calc(100%-16rem)] phone:w-full;
   }
 
   .delete {
