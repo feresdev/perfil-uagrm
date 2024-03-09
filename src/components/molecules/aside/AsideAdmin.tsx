@@ -3,7 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { FiFileText, FiHome, FiLock, FiLogIn, FiMenu, FiTrendingUp, FiX } from 'react-icons/fi';
+import { FiFileText, FiFolderMinus, FiHome, FiLock, FiLogIn, FiMenu, FiTrendingUp, FiX } from 'react-icons/fi';
+import { PiGraduationCap } from 'react-icons/pi';
 
 export default function AsideAdmin() {
     const ruta = usePathname();
@@ -41,7 +42,7 @@ export default function AsideAdmin() {
             <div className={` ${isAsideActive ? 'opacity-50 desktop:visible fixed inset-0' : 'opacity-0 desktop:invisible'} desktop:invisible tablet:invisible transition-opacity duration-75  bg-dark-body-alt-color z-20`} onClick={closeAside}></div>
 
             <aside className={`${isAsideActive ? 'phone:translate-x-0' : 'phone:-translate-x-full'
-                } transition-transform desktop:w-56 tablet:w-56 phone:w-64 h-full bg-dark-body-color border-r border-dark-border-color z-20 fixed left-0 bottom-0 top-0 transform`}>
+                } transition-transform w-64 h-full bg-dark-body-color border-r border-dark-border-color z-20 fixed left-0 bottom-0 top-0 transform`}>
 
                 {/* Header Title */}
                 <div className="h-14 border-dark-border-color border-b items-center justify-center flex desktop:px-6 tablet:px-4 phone:px-4">
@@ -72,17 +73,31 @@ export default function AsideAdmin() {
                                 <span className='flex text-sm justify-center'>Opciones</span>
                             </div>
                             <li className='flex flex-col gap-2'>
-                                <Link href='/estudiantes'>
+                                <Link href='/estudiantes/historico'>
                                     <div onClick={closeAside} className={`${isLinkActive('/estudiantes/historico') && 'bg-dark-container-alt-color font-medium'} px-4 transition-colors flex items-center w-full h-10 rounded text-gray-400 hover:text-dark-title-color/90 hover:bg-dark-container-alt-color`}>
                                         <button className='flex text-sm gap-1.5 justify-center'>
                                             <FiFileText size='1.2rem' />Histórico
                                         </button>
                                     </div>
                                 </Link>
-                                <Link href='/estudiantes'>
-                                    <div onClick={closeAside} className={`${isLinkActive("/estudiantes/avance") && 'bg-dark-container-alt-color font-medium'} px-4 transition-colors flex items-center w-full h-10 rounded text-gray-400 hover:text-dark-title-color/90 hover:bg-dark-container-alt-color`}>
-                                        <button className='flex text-sm gap-1.5 justify-center truncate'>
-                                            <FiTrendingUp size='1.2rem' />Avance académico
+                                <Link href='/estudiantes/academico'>
+                                    <div onClick={closeAside} className={`${isLinkActive("/estudiantes/academico") && 'bg-dark-container-alt-color font-medium'} px-4 transition-colors flex items-center w-full h-10 rounded text-gray-400 hover:text-dark-title-color/90 hover:bg-dark-container-alt-color`}>
+                                        <button className='flex text-sm gap-1.5 truncate w-full'>
+                                            <span><FiTrendingUp size='1.2rem' /></span>Avance académico
+                                        </button>
+                                    </div>
+                                </Link>
+                                <Link href='/estudiantes/boleta'>
+                                    <div onClick={closeAside} className={`${isLinkActive("/estudiantes/boleta") && 'bg-dark-container-alt-color font-medium'} px-4 transition-colors flex items-center w-full h-10 rounded text-gray-400 hover:text-dark-title-color/90 hover:bg-dark-container-alt-color`}>
+                                        <button className='flex text-sm gap-1.5 w-full'>
+                                            <span><FiFolderMinus size='1.2rem' /></span><span className='truncate'>Boleta de inscripción</span>
+                                        </button>
+                                    </div>
+                                </Link>
+                                <Link href='/estudiantes/notas'>
+                                    <div onClick={closeAside} className={`${isLinkActive("/estudiantes/notas") && 'bg-dark-container-alt-color font-medium'} px-4 transition-colors flex items-center w-full h-10 rounded text-gray-400 hover:text-dark-title-color/90 hover:bg-dark-container-alt-color`}>
+                                        <button className='flex text-sm gap-1.5 w-full'>
+                                            <span><PiGraduationCap size='1.2rem' /></span><span className='truncate'>Consulta de notas</span>
                                         </button>
                                     </div>
                                 </Link>

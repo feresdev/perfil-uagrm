@@ -21,44 +21,6 @@ export default function HeaderAdmin() {
                                 {isTitle}
                             </h1>
                         </div>
-                        <div className="flex justify-between items-center w-full">
-                            <nav>
-                                {/* <ul className="flex items-center gap-6">
-                                    <div className="relative cursor-pointer">
-                                        <span className="text-dark-text-lighter flex items-center gap-1">
-                                            <span>
-                                                <Link href='/' className="nav-item flex items-center gap-2">
-                                                    <span>Cursos</span>
-                                                </Link>
-                                            </span>
-                                            <BiChevronDown/>
-                                        </span>
-                                    </div>
-                                    <div className="relative cursor-pointer">
-                                        <span className="text-dark-text-lighter flex items-center gap-1">
-                                            <span>
-                                                <Link href='/' className="nav-item flex items-center gap-2">
-                                                    <span>Cursos</span>
-                                                </Link>
-                                            </span>
-                                            <BiChevronDown/>
-                                        </span>
-                                    </div>
-                                </ul> */}
-                            </nav>
-                            <div className="flex gap-2 items-center">
-                                <div className="flex gap-4 desktop:gap-2 items-center">
-                                    <div className="relative">
-                                        {/* <button disabled={isLoggingOut} className={`flex space-x-1 text-center items-center justify-center text-sm text-dark-text-color bg-dark-container-alt-color border border-dark-border-alt-color  rounded-md px-3 py-1`}>
-                                            {isLoggingOut && <PiSpinnerBold size='1rem' className='animate-spin' />}
-                                            <span>
-                                                {isLoggingOut ? 'Cerrando' : 'Cerrar sesión'}
-                                            </span>
-                                        </button> */}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </header>
             </div>
