@@ -1,4 +1,4 @@
-export interface Main {
+export interface EstudianteMain {
   title:    string;
   estudent: Estudent;
 }
