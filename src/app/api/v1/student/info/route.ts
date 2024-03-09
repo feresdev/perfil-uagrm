@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-// Método GET
+// Método GET: Obtener los datos personales
 export async function GET(req: NextRequest) {
   try {
     // Cookies
@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
     );
 
     const html = await response.text();
-    if (html === "not logged in") {
+    if (html === ("not logged in" || "Error: La sesión ha finalizado")) {
       return manejarError(
         401,
         "Acceso no autorizado",
