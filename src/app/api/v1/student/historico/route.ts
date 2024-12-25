@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
     );
 
     const html = await response.text();
-    if (html === ("not logged in" || "Error: La sesión ha finalizado")) {
+    if (html === "not logged in" || html === "Error: La sesión ha finalizado") {
       return manejarError(
         401,
         "Acceso no autorizado",
