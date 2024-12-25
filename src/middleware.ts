@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 export async function middleware(req: NextRequest) {
   // Verificamos la existencia del Token
   const cookieStore = cookies();
-  const session = cookieStore.get("PHPSESSID");
+  const session = (await cookieStore).get("PHPSESSID");
   const url = req.nextUrl.clone();
 
   // Se redirige si no hay token
